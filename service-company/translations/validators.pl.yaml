@@ -1,0 +1,11 @@
+uuid:
+  differentUUIDInBodyRawAndUrl: "Różne UUID w ładunku POST i parametrze URL"
+  invalid: "Nieprawidłowy format UUID"
+boolean:
+  invalid: "Nieprawidłowa wartość boolean"
+nip:
+  invalidLength: "Nieprawidłowa długość NIP"
+  invalid: "Nieprawidłowy NIP"
+email:
+  invalid: "Nieprawidłowy email"
+  required: "Email jest wymagany"

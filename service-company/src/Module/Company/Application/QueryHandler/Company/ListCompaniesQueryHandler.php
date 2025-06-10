@@ -8,7 +8,7 @@ use App\Common\Application\QueryHandler\ListQueryHandlerAbstract;
 use App\Module\Company\Application\Query\Company\ListCompaniesQuery;
 use App\Module\Company\Domain\Entity\Company;
 
-class ListCompaniesQueryHandler extends ListQueryHandlerAbstract
+final class ListCompaniesQueryHandler extends ListQueryHandlerAbstract
 {
     public function __invoke(ListCompaniesQuery $query): array
     {

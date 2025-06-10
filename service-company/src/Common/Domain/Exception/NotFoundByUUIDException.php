@@ -6,7 +6,7 @@ namespace App\Common\Domain\Exception;
 
 use Symfony\Component\HttpFoundation\Response;
 
-class NotFindByUUIDException extends \Exception
+class NotFoundByUUIDException extends \Exception
 {
     public function __construct(
         string $message = 'recordNotFoundByUUID',

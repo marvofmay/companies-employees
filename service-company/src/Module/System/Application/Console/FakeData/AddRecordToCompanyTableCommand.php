@@ -55,7 +55,7 @@ class AddRecordToCompanyTableCommand extends Command
                 ->getOneOrNullResult();
 
             if ($existingCompany !== null) {
-                $output->writeln(sprintf('<comment>%s: nazwa: %s lub NIP: %d</comment>', self::INFO_ALREADY_EXISTS, $data['name'], $data['nip']));
+                $output->writeln(sprintf('<comment>%s: NAZWA: %s lub NIP: %d</comment>', self::INFO_ALREADY_EXISTS, $data['name'], $data['nip']));
 
                 continue;
             }
@@ -64,12 +64,14 @@ class AddRecordToCompanyTableCommand extends Command
             $company->setName($data['name']);
             $company->setNip($data['nip']);
 
-            foreach ($data['phones'] as $phoneNumber) {
-                $contact = new Contact();
-                $contact->setType(ContactTypeEnum::PHONE->value);
-                $contact->setData($phoneNumber);
-                $contact->setCompany($company);
-                $this->entityManager->persist($contact);
+            if (isset($data['phones'])) {
+                foreach ($data['phones'] as $phoneNumber) {
+                    $contact = new Contact();
+                    $contact->setType(ContactTypeEnum::PHONE->value);
+                    $contact->setData($phoneNumber);
+                    $contact->setCompany($company);
+                    $this->entityManager->persist($contact);
+                }
             }
 
             foreach ($data['emails'] as $emailAddress) {
@@ -80,15 +82,19 @@ class AddRecordToCompanyTableCommand extends Command
                 $this->entityManager->persist($contact);
             }
 
-            $addressData = $data['address'];
-            $address = new Address();
-            $address->setStreet($addressData['street']);
-            $address->setPostcode($addressData['postcode']);
-            $address->setCity($addressData['city']);
-            $address->setCountry($addressData['country']);
-            $address->setCompany($company);
+            if (isset($data['address'])) {
+                $addressData = $data['address'];
 
-            $this->entityManager->persist($address);
+                $address = new Address();
+                $address->setStreet($addressData['street']);
+                $address->setPostcode($addressData['postcode']);
+                $address->setCity($addressData['city']);
+                $address->setCountry($addressData['country']);
+                $address->setCompany($company);
+
+                $this->entityManager->persist($address);
+            }
+
             $this->entityManager->persist($company);
             $this->entityManager->flush();
         }

@@ -27,6 +27,11 @@ class AccessReaderRepository extends ServiceEntityRepository implements AccessRe
         return $this->findOneBy([Access::COLUMN_NAME => $name, Access::RELATION_MODULE => $module]);
     }
 
+    public function getAccessByName(string $name): ?Access
+    {
+        return $this->findOneBy([Access::COLUMN_NAME => $name]);
+    }
+
     public function isAccessWithUUIDExists(string $uuid): bool
     {
         return null !== $this->findOneBy([Access::COLUMN_UUID => $uuid]);

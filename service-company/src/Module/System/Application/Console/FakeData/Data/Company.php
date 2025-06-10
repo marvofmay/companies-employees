@@ -6,7 +6,6 @@ namespace App\Module\System\Application\Console\FakeData\Data;
 
 final readonly class Company
 {
-
     public function getFakeData(): array
     {
         return [

@@ -83,7 +83,7 @@ class EmployeeUpdater extends EmployeeCreator
         }
     }
 
-    protected function setUser(string $email, string $firstName): void
+    protected function setUser(string $email): void
     {
         if (null !== $this->user && $this->user->getEmail() !== $email) {
             $this->user->setEmail($email);

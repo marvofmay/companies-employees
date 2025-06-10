@@ -11,6 +11,7 @@ interface AccessReaderInterface
 {
     public function getAccessByUUID(string $uuid): ?Access;
     public function getAccessByNameAndModuleUUID(string $name, Module $module): ?Access;
+    public function getAccessByName(string $name): ?Access;
     public function isAccessWithUUIDExists(string $uuid): bool;
     public function isAccessActive(string $uuid): bool;
 }

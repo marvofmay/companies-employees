@@ -57,7 +57,7 @@ class EmployeeCreator
             $this->setAddress($command->address);
         }
         $this->setContacts($command->phones, [$command->email]);
-        $this->setUser($command->email, $command->firstName);
+        $this->setUser($command->email);
 
         $this->setEmployeeMainData($command);
         $this->setEmployeeRelations($command);
@@ -120,10 +120,9 @@ class EmployeeCreator
         $this->address->setCountry($addressDTO->country);
     }
 
-    protected function setUser(string $email, string $firstName): void
+    protected function setUser(string $email): void
     {
-        $password = sprintf('%s-%s', $email, $firstName);
-        $user = $this->userFactory->create($email, $password);
+        $user = $this->userFactory->create($email, $email);
         $this->user = $user;
     }
 }

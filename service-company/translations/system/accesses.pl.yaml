@@ -7,6 +7,10 @@ access:
     role:
       description: "Dostęp do ról w systemie"
   system:
+    access:
+      description: "Dostęp do dostępów w systemie"
+    permission:
+      description: "Dostęp do uprwnień w systemie"
     setting:
       description: "Dostęp do ustawień systemu"
   notExists: "Dostęp o podanym UUID nie istnieje :uuid"

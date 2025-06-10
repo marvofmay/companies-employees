@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Module\Company\Infrastructure\Persistance\Repository\Doctrine\Employee\Reader;
 
 use App\Module\Company\Domain\Entity\Employee;
-use App\Module\Company\Domain\Entity\User;
 use App\Module\Company\Domain\Interface\Employee\EmployeeReaderInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -24,7 +23,6 @@ class EmployeeReaderRepository extends ServiceEntityRepository implements Employ
             ->setParameter('uuid', $uuid)
             ->getOneOrNullResult();
     }
-
 
     public function isEmployeeWithUUIDExists(string $uuid): bool
     {

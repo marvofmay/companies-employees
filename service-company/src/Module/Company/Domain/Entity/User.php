@@ -110,9 +110,6 @@ class User implements PasswordAuthenticatedUserInterface, UserInterface
         $this->{self::COLUMN_EMAIL} = $email;
     }
 
-    /**
-     * Setter hasła – przyjmuje już ZAHASHOWANE hasło.
-     */
     public function setPassword(string $hashedPassword): void
     {
         $this->{self::COLUMN_PASSWORD} = $hashedPassword;
@@ -125,7 +122,6 @@ class User implements PasswordAuthenticatedUserInterface, UserInterface
 
     public function eraseCredentials(): void
     {
-        // oczyść w razie potrzeby wrażliwe dane, np. plainPassword
     }
 
     public function getUserIdentifier(): string

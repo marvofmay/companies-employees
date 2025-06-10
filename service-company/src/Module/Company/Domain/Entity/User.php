@@ -92,7 +92,6 @@ class User implements PasswordAuthenticatedUserInterface, UserInterface
 
     public function getRoles(): array
     {
-        // Możesz tu zwrócić rzeczywiste role, jeśli masz relację roles
         return [];
     }
 

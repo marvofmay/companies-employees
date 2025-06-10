@@ -37,6 +37,10 @@ class Employee
     public const string COLUMN_UPDATED_AT = 'updatedAt';
     public const string COLUMN_DELETED_AT = 'deletedAt';
     public const string RELATION_COMPANY = 'company';
+    public const string RELATION_ROLE = 'role';
+    public const string RELATION_ADDRESS = 'address';
+    public const string RELATION_CONTACTS = 'contacts';
+
     public const string ALIAS = 'employee';
     public const SOFT_DELETED_AT = 'soft';
     public const HARD_DELETED_AT = 'hard';
@@ -63,19 +67,8 @@ class Employee
     #[Assert\NotBlank()]
     private string $lastName;
 
-    #[ORM\Column(type: Types::STRING, length: 11, nullable: false)]
-    #[Assert\NotBlank()]
-    private string $pesel;
-
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: false)]
-    private ?\DateTimeInterface $employmentFrom;
-
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $employmentTo = null;
-
     #[ORM\OneToOne(targetEntity: User::class, mappedBy: 'employee', cascade: ['persist', 'remove'])]
     private ?User $user = null;
-
 
     #[ORM\OneToMany(targetEntity: Contact::class, mappedBy: 'employee', cascade: ['persist', 'remove'])]
     private Collection $contacts;
@@ -157,5 +150,25 @@ class Employee
         if ($user && $user->getEmployee() !== $this) {
             $user->setEmployee($this);
         }
+    }
+
+    public function getCompany(): Company
+    {
+        return $this->company;
+    }
+
+    public function setCompany(Company $company): void
+    {
+        $this->company = $company;
+    }
+
+    public function getRole(): Role
+    {
+        return $this->role;
+    }
+
+    public function setRole(Role $role): void
+    {
+        $this->role = $role;
     }
 }

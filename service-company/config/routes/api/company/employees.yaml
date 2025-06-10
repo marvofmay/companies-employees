@@ -1,0 +1,6 @@
+api_employee_get:
+    path: api/employees/{uuid}
+    controller: App\Module\Company\Presentation\API\Controller\Employee\GetEmployeeController::get
+    methods: [GET]
+    requirements:
+        uuid: '[0-9a-fA-F-]{36}'

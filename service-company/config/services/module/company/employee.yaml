@@ -1,0 +1,8 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+    #Employee handlers
+    App\Module\Company\Application\QueryHandler\Employee\GetEmployeeByUUIDQueryHandler:
+        tags:
+            - { name: 'messenger.message_handler', bus: 'query.bus' }

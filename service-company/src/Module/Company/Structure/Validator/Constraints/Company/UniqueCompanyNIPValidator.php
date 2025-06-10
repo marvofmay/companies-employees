@@ -26,9 +26,9 @@ class UniqueCompanyNIPValidator extends ConstraintValidator
         }
 
         $object = $this->context->getObject();
-        $nip = property_exists($object, 'nip') ? $object->nip : null;
+        $uuid = property_exists($object, 'uuid') ? $object->uuid : null;
 
-        if ($this->companyReaderRepository->isCompanyExistsWithNIP($value, $nip)) {
+        if ($this->companyReaderRepository->isCompanyExistsWithNIP($value, $uuid)) {
             $this->context->buildViolation($this->translator->trans($constraint->message, [], 'companies'))
                 ->setParameter('{{ value }}', $value)
                 ->addViolation();

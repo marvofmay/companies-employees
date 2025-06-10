@@ -8,7 +8,11 @@ permission:
   view:
     description: "Uprawnienie przeglądania zasobu"
   list:
-      description: "Uprawnienie listowania zasobu"
+    description: "Uprawnienie listowania zasobu"
+  assign_access_to_role:
+    description: "Uprawnienie przypisywanina dostępu dla roli"
+  assign_permission_to_access_role:
+    description: "Uprawnienie przypisywania uprawnienia dla roli"
   notExists: "Uprawnienie o podanym UUID nie istnieje :uuid"
   uuid:
     required: "Wymagane UUID uprawnienia"

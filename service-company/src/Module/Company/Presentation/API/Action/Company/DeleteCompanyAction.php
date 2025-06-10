@@ -21,7 +21,7 @@ final readonly class DeleteCompanyAction
     public function execute(string $uuid): void
     {
         $company = $this->companyReaderRepository->getCompanyByUUID($uuid);
-        if ($company === null) {
+        if (null === $company) {
             throw new NotFoundByUUIDException($this->translator->trans('company.uuid.notExists', [':uuid' => $uuid], 'companies'));
         }
 

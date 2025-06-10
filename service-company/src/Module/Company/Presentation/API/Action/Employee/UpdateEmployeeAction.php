@@ -9,7 +9,7 @@ use App\Module\Company\Domain\DTO\Employee\UpdateDTO;
 use App\Module\Company\Domain\Interface\Employee\EmployeeReaderInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-readonly class UpdateEmployeeAction
+final readonly class UpdateEmployeeAction
 {
     public function __construct(private MessageBusInterface $commandBus, private EmployeeReaderInterface $employeeReaderRepository)
     {

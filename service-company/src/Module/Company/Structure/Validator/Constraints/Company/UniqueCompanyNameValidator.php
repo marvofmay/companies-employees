@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class UniqueCompanyFullNameValidator extends ConstraintValidator
+class UniqueCompanyNameValidator extends ConstraintValidator
 {
     public function __construct(private readonly CompanyReaderInterface $companyReaderRepository, private readonly TranslatorInterface $translator)
     {

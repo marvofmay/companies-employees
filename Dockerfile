@@ -50,7 +50,7 @@ RUN pecl install xdebug \
 
 
 # Skopiuj pliki aplikacji do katalogu Apache
-COPY . /var/www/html
+COPY ./service-company /var/www/html
 
 # Skopiuj własny plik konfiguracyjny Apache (opcjonalne)
 COPY apache-config.conf /etc/apache2/sites-available/000-default.conf

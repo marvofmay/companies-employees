@@ -15,7 +15,7 @@ services:
     ports:
       - "81:80"
     volumes:
-      - .:/var/www/html
+      - ./service-company:/var/www/html
     depends_on:
       web24-db:
         condition: service_healthy

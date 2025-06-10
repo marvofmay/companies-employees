@@ -9,6 +9,7 @@ use App\Common\Validator\Constraints\MinMaxLength;
 use App\Common\Validator\Constraints\NotBlank;
 use App\Common\Validator\Constraints\NIP;
 use App\Module\Company\Structure\Validator\Constraints\Company\UniqueCompanyName;
+use App\Module\Company\Structure\Validator\Constraints\Company\UniqueCompanyNIP;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class CreateDTO
@@ -29,6 +30,7 @@ class CreateDTO
         'invalidNIP' => 'company.nip.invalid',
         'domain' => 'companies',
     ])]
+    #[UniqueCompanyNIP]
     public ?string $nip = null;
 
     #[Assert\All([

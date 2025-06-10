@@ -5,7 +5,11 @@ boolean:
   invalid: "Nieprawidłowa wartość boolean"
 nip:
   invalidLength: "Nieprawidłowa długość NIP"
-  invalid: "Nieprawidłowy NIP"
+  invalid: "Nieprawidłowy NIP :nip"
 email:
   invalid: "Nieprawidłowy email"
   required: "Email jest wymagany"
+phones:
+    max: 'Możesz podać maksymalnie {{ limit }} numery telefonów'
+emails:
+    max: 'Możesz podać maksymalnie {{ limit }} adresy email'

@@ -7,6 +7,7 @@ namespace App\Module\Company\Domain\DTO\Company;
 use App\Common\Domain\DTO\AddressDTO;
 use App\Common\Validator\Constraints\MinMaxLength;
 use App\Common\Validator\Constraints\NotBlank;
+use App\Common\Validator\Constraints\NIP;
 use App\Module\Company\Structure\Validator\Constraints\Company\UniqueCompanyName;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -24,9 +25,8 @@ class CreateDTO
     #[UniqueCompanyName]
     public string $name = '';
 
-    #[MinMaxLength(min: 10, max: 20, message: [
-        'tooShort' => 'company.nip.minimumLength',
-        'tooLong' => 'company.nip.maximumLength',
+    #[NIP(message: [
+        'invalidNIP' => 'company.nip.invalid',
         'domain' => 'companies',
     ])]
     public ?string $nip = null;

@@ -4,15 +4,14 @@ company:
     notFound: "Firma o podanym UUID nie istnieje"
     notExists: "Firma o podanym UUID nie istnieje :uuid"
     required: "UUID firmy jest wymagane"
-  fullName:
+  name:
     alreadyExists: "Firma o podanej nazwie już istnieje"
     required: "Nazwa firmy jest wymagana"
     minimumLength: "Minimalnie znaków :qty"
     maximumLength: "Maksymalnie znaków :qty"
     expectedUniqueCompanyNameConstraint: "Oczekiwano unikalnej nazwy firmy"
   nip:
-    minimumLength: "Minimalnie znaków :qty"
-    maximumLength: "Maksymalnie znaków :qty"
+    invalid: "Niepoprawny NIP"
     alreadyExists: "Firma o podanym NIP już istnieje"
     required: "NIP firmy jest wymagany"
   regon:

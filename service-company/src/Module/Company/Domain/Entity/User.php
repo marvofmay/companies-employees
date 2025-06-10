@@ -75,6 +75,11 @@ class User implements PasswordAuthenticatedUserInterface, UserInterface
         return $this->{self::COLUMN_UUID};
     }
 
+    public function setUUID(UuidInterface $uuid): void
+    {
+        $this->{self::COLUMN_UUID} = $uuid;
+    }
+
     public function getEmployeeUuid(): ?string
     {
         return $this->{self::COLUMN_EMPLOYEE_UUID};

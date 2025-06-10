@@ -122,10 +122,8 @@ class EmployeeCreator
 
     protected function setUser(string $email, string $firstName): void
     {
-        if (null === $this->employee->getUser()) {
-            $password = sprintf('%s-%s', $email, $firstName);
-            $user = $this->userFactory->create($email, $password);
-            $this->user = $user;
-        }
+        $password = sprintf('%s-%s', $email, $firstName);
+        $user = $this->userFactory->create($email, $password);
+        $this->user = $user;
     }
 }

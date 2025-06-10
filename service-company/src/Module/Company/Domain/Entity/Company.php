@@ -28,16 +28,20 @@ class Company
     use AttributesEntityTrait;
     use RelationsEntityTrait;
 
-    public const COLUMN_UUID = 'uuid';
+    public const string COLUMN_UUID = 'uuid';
 
-    public const COLUMN_NAME = 'name';
-    public const COLUMN_NIP = 'nip';
-    public const COLUMN_CREATED_AT = 'createdAt';
-    public const COLUMN_UPDATED_AT = 'updatedAt';
-    public const COLUMN_DELETED_AT = 'deletedAt';
-    public const ALIAS = 'company';
-    public const SOFT_DELETED_AT = 'soft';
-    public const HARD_DELETED_AT = 'hard';
+    public const string COLUMN_NAME = 'name';
+    public const string COLUMN_NIP = 'nip';
+    public const string COLUMN_CREATED_AT = 'createdAt';
+    public const string COLUMN_UPDATED_AT = 'updatedAt';
+    public const string COLUMN_DELETED_AT = 'deletedAt';
+
+    public const string ALIAS = 'company';
+    public const string SOFT_DELETED_AT = 'soft';
+    public const string HARD_DELETED_AT = 'hard';
+    public const string RELATION_EMPLOYEES = 'employees';
+    public const string RELATION_CONTACTS = 'contacts';
+    public const string RELATION_ADDRESS = 'address';
 
     #[ORM\Id]
     #[ORM\Column(type: 'uuid', unique: true)]
@@ -120,4 +124,8 @@ class Company
         $this->nip = $nip;
     }
 
+    public function getEmployees(): Collection
+    {
+        return $this->employees;
+    }
 }

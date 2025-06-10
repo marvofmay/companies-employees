@@ -29,7 +29,12 @@ class Access
     public const string COLUMN_UUID = 'uuid';
     public const string COLUMN_NAME = 'name';
     public const string COLUMN_DESCRIPTION = 'description';
+    public const string COLUMN_ACTIVE = 'active';
+    public const string COLUMN_CREATED_AT = 'createdAt';
+    public const string COLUMN_UPDATED_AT = 'updatedAt';
+    public const string COLUMN_DELETED_AT = 'deletedAt';
     public const string ALIAS = 'access';
+    public const string RELATION_MODULE = 'module';
 
 
     #[ORM\Id]

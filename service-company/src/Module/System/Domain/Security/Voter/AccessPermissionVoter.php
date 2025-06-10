@@ -3,6 +3,7 @@
 namespace App\Module\System\Domain\Security\Voter;
 
 use App\Module\Company\Domain\Entity\Employee;
+use App\Module\System\Application\Console\DefaultData\AddRecordToUserTableCommand;
 use App\Module\System\Domain\Service\RoleAccessPermission\RoleAccessPermissionChecker;
 use App\Module\System\Domain\Entity\Access;
 use App\Module\System\Domain\Entity\Module;
@@ -63,7 +64,7 @@ abstract class AccessPermissionVoter extends Voter
             return false;
         }
 
-        if ($user->getEmail() === 'admin.hrapp@gmail.com') {
+        if ($user->getEmail() === AddRecordToUserTableCommand::DEFAULT_EMAIL) {
             return true;
         }
 

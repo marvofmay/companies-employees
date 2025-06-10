@@ -30,7 +30,7 @@ readonly class PayloadErrorEventSubscriber implements EventSubscriberInterface
         $isValidationEvent = $event->getThrowable()->getPrevious() instanceof ValidationFailedException;
 
         if (!$isHttpEvent || !$isValidationEvent) {
-            return;
+           return;
         }
 
         $validationException = $event->getThrowable()->getPrevious();

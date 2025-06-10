@@ -15,3 +15,6 @@ services:
     App\Module\Company\Application\QueryHandler\Employee\GetEmployeeByUUIDQueryHandler:
         tags:
             - { name: 'messenger.message_handler', bus: 'query.bus' }
+    App\Module\Company\Application\QueryHandler\Employee\ListEmployeesQueryHandler:
+        tags:
+            - { name: 'messenger.message_handler', bus: 'query.bus' }

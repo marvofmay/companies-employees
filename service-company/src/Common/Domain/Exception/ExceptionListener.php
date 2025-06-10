@@ -22,14 +22,14 @@ class ExceptionListener
 
         if ($exception instanceof MethodNotAllowedHttpException) {
             $response = new JsonResponse([
-                'message' => $this->translator->trans('Niepoprawna metoda HTTP dla tego zasobu. Sprawdź dokumentację API.'),
+                'message' => $this->translator->trans('notCorrectMethodHTTP'),
             ]);
             $event->setResponse($response);
         }
 
         if ($exception instanceof NotFoundHttpException) {
             $response = new JsonResponse([
-                'message' => $this->translator->trans('Endpoint nie został znaleziony lub brakuje wymaganych parametrów.'),
+                'message' => $this->translator->trans('notEndpointFound'),
             ]);
             $event->setResponse($response);
         }

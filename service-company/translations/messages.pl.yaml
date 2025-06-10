@@ -1,1 +1,3 @@
 accessDenied: "Zabroniony dostęp - brak uprawnień"
+notCorrectMethodHTTP: "Niepoprawna metoda HTTP dla tego zasobu. Sprawdź dokumentację API"
+notEndpointFound: "Endpoint nie został znaleziony lub brakuje wymaganych parametrów."

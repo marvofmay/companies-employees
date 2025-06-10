@@ -1,0 +1,5 @@
+module:
+  system:
+    description: "Moduł system"
+  company:
+    description: "Moduł firma"

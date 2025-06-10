@@ -1,0 +1,14 @@
+permission:
+  create:
+    description: "Uprawnienie towrznenia zasobu"
+  update:
+    description: "Uprawnienie aktualizacji zasobu"
+  delete:
+    description: "Uprawnienie kasowania zasobu"
+  view:
+    description: "Uprawnienie przeglądania zasobu"
+  list:
+      description: "Uprawnienie listowania zasobu"
+  notExists: "Uprawnienie o podanym UUID nie istnieje :uuid"
+  uuid:
+    required: "Wymagane UUID uprawnienia"

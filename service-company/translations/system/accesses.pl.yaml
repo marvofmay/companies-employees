@@ -1,0 +1,14 @@
+access:
+  company:
+    company:
+      description: "Dostęp do firm"
+    employee:
+      description: "Dostęp do pracowników"
+    role:
+      description: "Dostęp do ról w systemie"
+  system:
+    setting:
+      description: "Dostęp do ustawień systemu"
+  notExists: "Dostęp o podanym UUID nie istnieje :uuid"
+  uuid:
+    required: "Wymagane UUID dostępu"

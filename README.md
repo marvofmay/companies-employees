@@ -40,24 +40,23 @@ Wykonywanie CRUD np. w ``POSTMAN``
   ``/var/www/html# composer install``
 
 ## Użycie
-- towrzenie bazy danych:
-  ``php bin/console doctrine:database:create``
+- towrzenie bazy danych (w kontenerze php):
+  ``/var/www/html# php bin/console doctrine:database:create``
 
-- uruchomienie migracji:
+- uruchomienie migracji (w kontenerze php):
   ``/var/www/html# php bin/console doctrine:migrations:migrate``
 
 
-- wypełnienie tabel domyślnymi danymi (konieczne do wykonania):
+- wypełnienie tabel domyślnymi danymi (konieczne do wykonania, również w kontenerze php):
   ``/var/www/html# php bin/console app:initialize-system-default-data``
 
 
-- wypełnienie tabel fake`owymi danymi:
+- wypełnienie tabel fake`owymi danymi (w kontenerze php):
   ``/var/www/html# php bin/console app:initialize-system-fake-data``
 
 
-- logowanie (JWT):
 
-  --
+- logowanie (JWT):
 
   url ``/api/login``
 

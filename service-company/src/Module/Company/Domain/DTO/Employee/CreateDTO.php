@@ -43,7 +43,7 @@ class CreateDTO
     public string $email;
 
     #[NotBlank(message: [
-        'text'   => 'Employee.firstName.required',
+        'text'   => 'employee.firstName.required',
         'domain' => 'employees',
     ])]
     #[MinMaxLength(min: 3, max: 50, message: [

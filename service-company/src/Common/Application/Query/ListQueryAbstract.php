@@ -22,7 +22,7 @@ abstract class ListQueryAbstract
         $this->page = $this->queryDTO->page;
         $this->orderBy = $this->queryDTO->sortBy;
         $this->orderDirection = $this->queryDTO->sortDirection;
-        $this->offset = ($this->page - 1) * $this->limit;
+        $this->offset = ($this->page > 0) ? ($this->page - 1) * $this->limit : 0;
 
         $this->filters = array_filter(
             (array) $this->queryDTO,

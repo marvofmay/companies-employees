@@ -41,6 +41,46 @@ final readonly class Employee
                     'country'  => 'Polska',
                 ],
             ],
+            [
+                'companyName'    => 'NCBR',
+                'roleName'       => $this->translator->trans(sprintf('role.defaultData.name.%s', RoleEnum::EMPLOYEE->value), [], 'roles'),
+                'accessName'     => $accessName,
+                'permissionName' => PermissionEnum::LIST->value,
+                'firstName'      => 'Anna',
+                'lastName'       => 'Nowak',
+                'phones'         => [
+                    '111-555-555',
+                    '112-555-555',
+                    '113-555-555',
+                ],
+                'email'          => 'anna.nowak@example.com',
+                'address'        => [
+                    'street'   => 'Spokojna 12/4',
+                    'postcode' => '22-444',
+                    'city'     => 'Sopot',
+                    'country'  => 'Polska',
+                ],
+            ],
+            [
+                'companyName'    => 'NCBR',
+                'roleName'       => $this->translator->trans(sprintf('role.defaultData.name.%s', RoleEnum::EMPLOYEE->value), [], 'roles'),
+                'accessName'     => $accessName,
+                'permissionName' => PermissionEnum::LIST->value,
+                'firstName'      => 'Michał',
+                'lastName'       => 'Kowal',
+                'phones'         => [
+                    '111-555-555',
+                    '112-555-555',
+                    '113-555-555',
+                ],
+                'email'          => 'michal.kowal@example.com',
+                'address'        => [
+                    'street'   => 'Za morzem 23',
+                    'postcode' => '33-444',
+                    'city'     => 'Gdynia',
+                    'country'  => 'Polska',
+                ],
+            ],
         ];
     }
 }

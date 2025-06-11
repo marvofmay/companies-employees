@@ -1,3 +1,5 @@
 accessDenied: "Zabroniony dostęp - brak uprawnień"
 notCorrectMethodHTTP: "Niepoprawna metoda HTTP dla tego zasobu. Sprawdź dokumentację API"
 notEndpointFound: "Endpoint nie został znaleziony lub brakuje wymaganych parametrów."
+pageMustBeAnInteger: "Paramter page musi być liczbą naturalną"
+pageMustBeGreaterThan0: "Paramter page musi być liczbą naturalną, większą od 0"

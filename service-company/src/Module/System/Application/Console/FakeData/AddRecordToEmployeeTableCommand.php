@@ -7,21 +7,19 @@ namespace App\Module\System\Application\Console\FakeData;
 use App\Module\Company\Domain\Entity\Employee;
 use App\Module\Company\Domain\Enum\ContactTypeEnum;
 use App\Module\Company\Domain\Interface\Company\CompanyReaderInterface;
-use App\Module\Company\Domain\Interface\Employee\EmployeeReaderInterface;
 use App\Module\Company\Domain\Interface\Role\RoleReaderInterface;
 use App\Module\Company\Domain\Interface\User\UserReaderInterface;
 use App\Module\Company\Domain\Service\User\UserFactory;
 use App\Module\System\Application\Console\FakeData\Data\Employee as EmployeeFakeData;
 use App\Module\Company\Domain\Entity\Address;
-use App\Module\Company\Domain\Entity\Company;
 use App\Module\Company\Domain\Entity\Contact;
 use App\Module\System\Domain\Entity\RoleAccess;
 use App\Module\System\Domain\Entity\RoleAccessPermission;
 use App\Module\System\Domain\Interface\Access\AccessReaderInterface;
 use App\Module\System\Domain\Interface\Permission\PermissionReaderInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use App\Module\System\Domain\Interface\RoleAccess\RoleAccessInterface;
+use App\Module\System\Domain\Interface\RoleAccessPermission\RoleAccessPermissionInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Query\Parameter;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -36,14 +34,16 @@ class AddRecordToEmployeeTableCommand extends Command
     private const string INFO_ALREADY_EXISTS = 'Employee with EMAIL already exists. No action taken.';
 
     public function __construct(
-        private readonly EntityManagerInterface $entityManager,
-        private CompanyReaderInterface          $companyReaderRepository,
-        private UserReaderInterface             $userReaderRepository,
-        private RoleReaderInterface             $roleReaderRepository,
-        private AccessReaderInterface           $accessReaderRepository,
-        private PermissionReaderInterface       $permissionReaderRepository,
-        private readonly EmployeeFakeData       $employeeFakeData,
-        private readonly UserFactory            $userFactory,
+        private readonly EntityManagerInterface        $entityManager,
+        private readonly CompanyReaderInterface        $companyReaderRepository,
+        private readonly UserReaderInterface           $userReaderRepository,
+        private readonly RoleReaderInterface           $roleReaderRepository,
+        private readonly AccessReaderInterface         $accessReaderRepository,
+        private readonly PermissionReaderInterface     $permissionReaderRepository,
+        private readonly RoleAccessInterface           $roleAccessRepository,
+        private readonly RoleAccessPermissionInterface $roleAccessPermissionRepository,
+        private readonly EmployeeFakeData              $employeeFakeData,
+        private readonly UserFactory                   $userFactory,
     )
     {
         parent::__construct();
@@ -80,11 +80,17 @@ class AddRecordToEmployeeTableCommand extends Command
             $employee->setFirstName($data['firstName']);
             $employee->setLastName($data['lastName']);
 
-            $roleAccess = new RoleAccess($role, $access);
-            $this->entityManager->persist($roleAccess);
+            $isRoleHasAccess = $this->roleAccessRepository->isRoleHasAccess($access, $role);
+            if (!$isRoleHasAccess) {
+                $roleAccess = new RoleAccess($role, $access);
+                $this->entityManager->persist($roleAccess);
+            }
 
-            $roleAccessPermission = new RoleAccessPermission($role, $access, $permission);
-            $this->entityManager->persist($roleAccessPermission);
+            $isRoleHasAccessAndPermission = $this->roleAccessPermissionRepository->isRoleHasAccessAndPermission($permission, $access, $role);
+            if (!$isRoleHasAccessAndPermission) {
+                $roleAccessPermission = new RoleAccessPermission($role, $access, $permission);
+                $this->entityManager->persist($roleAccessPermission);
+            }
 
             foreach ($data['phones'] as $phoneNumber) {
                 $contact = new Contact();

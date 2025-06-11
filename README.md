@@ -22,7 +22,7 @@ Wykonywanie CRUD np. w ``POSTMAN``
 ## Instalacja
 - będąc w katalogu projektu, uruchamiamy kontenery:
 
-  ``/web24 docker compose up``
+  ``/katalog-projektu docker compose up``
 
 
 - listowanie uruchomionych kontenerów:
@@ -40,6 +40,9 @@ Wykonywanie CRUD np. w ``POSTMAN``
   ``/var/www/html# composer install``
 
 ## Użycie
+- towrzenie bazy danych:
+  ``php bin/console doctrine:database:create``
+
 - uruchomienie migracji:
   ``/var/www/html# php bin/console doctrine:migrations:migrate``
 

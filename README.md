@@ -41,15 +41,15 @@ Wykonywanie CRUD np. w ``POSTMAN``
 
 ## Użycie
 - uruchomienie migracji:
-  ``/var/www/html# php ``
+  ``/var/www/html# php bin/console doctrine:migrations:migrate``
 
 
 - wypełnienie tabel domyślnymi danymi (konieczne do wykonania):
-  ``/var/www/html# php ``
+  ``/var/www/html# php bin/console app:initialize-system-default-data``
 
 
 - wypełnienie tabel fake`owymi danymi:
-  ``/var/www/html# ``
+  ``/var/www/html# php bin/console app:initialize-system-fake-data``
 
 
 - logowanie (JWT):
@@ -189,6 +189,9 @@ Wykonywanie CRUD np. w ``POSTMAN``
     }
 }
 ```
+
+  Nowy employee może się logować danymi - login i hasło to jego email.
+  Nie ma ustawionych żadnych dostępów / uprawnień.
 
 - update employee [PUT]: ``/api/employees/00c1c4e8-bc05-4a24-9665-4a402a18c891``
 

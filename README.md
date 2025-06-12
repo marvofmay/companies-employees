@@ -134,7 +134,6 @@ Wykonywanie CRUD np. w ``POSTMAN``
 
 ```
 {
-    "uuid": "3e005155-b1ec-4ff6-9455-87c76a1f99dd",
     "name": "Firma \"Complex 3uuu\"",
     "nip": "1227053290",
     "phones": [
@@ -170,7 +169,7 @@ Wykonywanie CRUD np. w ``POSTMAN``
 - create employee [POST]: ``/api/employees``
 
   payload:
-  pola `phones`, `emails`, `address` nie są wymagane
+  pola `phones`, `email`, `address` nie są wymagane
 ```
 {
     "companyUUID": "54c20316-bef8-429d-a9ae-44ddb90149a3",

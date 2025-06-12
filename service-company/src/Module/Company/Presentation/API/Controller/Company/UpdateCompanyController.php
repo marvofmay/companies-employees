@@ -9,7 +9,6 @@ use App\Module\Company\Presentation\API\Action\Company\UpdateCompanyAction;
 use App\Module\System\Domain\Enum\AccessEnum;
 use App\Module\System\Domain\Enum\PermissionEnum;
 use Psr\Log\LoggerInterface;
-use Ramsey\Uuid\UuidInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;

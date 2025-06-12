@@ -7,16 +7,18 @@ namespace App\Module\Company\Presentation\API\Action\Company;
 use App\Module\Company\Application\Command\Company\UpdateCompanyCommand;
 use App\Module\Company\Domain\DTO\Company\UpdateDTO;
 use App\Module\Company\Domain\Interface\Company\CompanyReaderInterface;
-use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-readonly class UpdateCompanyAction
+final readonly class UpdateCompanyAction
 {
-    public function __construct(private MessageBusInterface $commandBus, private CompanyReaderInterface $companyReaderRepository, private readonly TranslatorInterface $translator,)
+    public function __construct(
+        private MessageBusInterface $commandBus,
+        private CompanyReaderInterface $companyReaderRepository,
+        private TranslatorInterface $translator,
+    )
     {
     }
 

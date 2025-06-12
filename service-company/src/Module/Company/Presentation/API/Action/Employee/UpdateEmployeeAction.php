@@ -7,17 +7,28 @@ namespace App\Module\Company\Presentation\API\Action\Employee;
 use App\Module\Company\Application\Command\Employee\UpdateEmployeeCommand;
 use App\Module\Company\Domain\DTO\Employee\UpdateDTO;
 use App\Module\Company\Domain\Interface\Employee\EmployeeReaderInterface;
+use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 final readonly class UpdateEmployeeAction
 {
-    public function __construct(private MessageBusInterface $commandBus, private EmployeeReaderInterface $employeeReaderRepository)
+    public function __construct(
+        private MessageBusInterface $commandBus,
+        private EmployeeReaderInterface $employeeReaderRepository,
+        private TranslatorInterface $translator,
+    )
     {
     }
 
-    public function execute(UpdateDTO $updateDTO): void
+    public function execute(string $uuid, UpdateDTO $updateDTO): void
     {
-        $employee = $this->employeeReaderRepository->getEmployeeByUUID($updateDTO->getUUID());
+        $employee = $this->employeeReaderRepository->getEmployeeByUUID($uuid);
+        if (null === $employee) {
+            throw new Exception( $this->translator->trans('employee.uuid.notExists', [], 'employees'), Response::HTTP_NOT_FOUND);
+        }
+
         $this->commandBus->dispatch(
             new UpdateEmployeeCommand(
                 $employee,

@@ -30,11 +30,7 @@ class UpdateEmployeeController extends AbstractController
                 throw new \Exception($this->translator->trans('accessDenied', [], 'messages'), Response::HTTP_FORBIDDEN);
             }
 
-            if ($uuid !== $updateDTO->getUUID()) {
-                throw new \Exception($this->translator->trans('uuid.differentUUIDInBodyRawAndUrl', [], 'validators'), Response::HTTP_CONFLICT);
-            }
-
-            $updateEmployeeAction->execute($updateDTO);
+            $updateEmployeeAction->execute($uuid, $updateDTO);
 
             return new JsonResponse(['message' => $this->translator->trans('employee.update.success', [], 'employees')], Response::HTTP_CREATED);
         } catch (\Exception $error) {

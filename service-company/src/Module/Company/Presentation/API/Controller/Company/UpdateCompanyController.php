@@ -9,6 +9,7 @@ use App\Module\Company\Presentation\API\Action\Company\UpdateCompanyAction;
 use App\Module\System\Domain\Enum\AccessEnum;
 use App\Module\System\Domain\Enum\PermissionEnum;
 use Psr\Log\LoggerInterface;
+use Ramsey\Uuid\UuidInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,11 +31,7 @@ final class UpdateCompanyController extends AbstractController
                 throw new \Exception($this->translator->trans('accessDenied', [], 'messages'), Response::HTTP_FORBIDDEN);
             }
 
-            if ($uuid !== $updateDTO->getUUID()) {
-                throw new \Exception($this->translator->trans('uuid.differentUUIDInBodyRawAndUrl', [], 'validators'), Response::HTTP_CONFLICT);
-            }
-
-            $updateCompanyAction->execute($updateDTO);
+            $updateCompanyAction->execute($uuid, $updateDTO);
 
             return new JsonResponse(['message' => $this->translator->trans('company.update.success', [], 'companies')], Response::HTTP_CREATED);
         } catch (\Exception $error) {

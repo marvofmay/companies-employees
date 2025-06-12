@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Module\Company\Presentation\API\Action\Company;
 
 use App\Module\Company\Application\Command\Company\UpdateCompanyCommand;
+use App\Module\Company\Application\Validator\Company\CompanyValidator;
 use App\Module\Company\Domain\DTO\Company\UpdateDTO;
 use App\Module\Company\Domain\Interface\Company\CompanyReaderInterface;
 use Symfony\Component\Config\Definition\Exception\Exception;
@@ -18,6 +19,7 @@ final readonly class UpdateCompanyAction
         private MessageBusInterface $commandBus,
         private CompanyReaderInterface $companyReaderRepository,
         private TranslatorInterface $translator,
+        private CompanyValidator $companyValidator,
     )
     {
     }
@@ -28,6 +30,8 @@ final readonly class UpdateCompanyAction
         if (null === $company) {
             throw new Exception( $this->translator->trans('company.uuid.notExists', [], 'companies'), Response::HTTP_NOT_FOUND);
         }
+
+        $this->companyValidator->validateCompanyExists($updateDTO->getNIP(), $updateDTO->getName(), $uuid);
 
         $this->commandBus->dispatch(
             new UpdateCompanyCommand(

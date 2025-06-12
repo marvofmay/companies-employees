@@ -8,8 +8,6 @@ use App\Common\Domain\DTO\AddressDTO;
 use App\Common\Validator\Constraints\MinMaxLength;
 use App\Common\Validator\Constraints\NotBlank;
 use App\Common\Validator\Constraints\NIP;
-use App\Module\Company\Structure\Validator\Constraints\Company\UniqueCompanyName;
-use App\Module\Company\Structure\Validator\Constraints\Company\UniqueCompanyNIP;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class CreateDTO
@@ -23,14 +21,12 @@ class CreateDTO
         'tooLong' => 'company.name.maximumLength',
         'domain' => 'companies',
     ])]
-    #[UniqueCompanyName]
     public string $name = '';
 
     #[NIP(message: [
         'invalidNIP' => 'company.nip.invalid',
         'domain' => 'companies',
     ])]
-    #[UniqueCompanyNIP]
     public ?string $nip = null;
 
     #[Assert\All([
@@ -61,7 +57,6 @@ class CreateDTO
     {
         return $this->name;
     }
-
 
     public function getNIP(): ?string
     {

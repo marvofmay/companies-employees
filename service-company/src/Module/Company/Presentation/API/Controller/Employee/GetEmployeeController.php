@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class GetEmployeeController extends AbstractController
+final class GetEmployeeController extends AbstractController
 {
     public function __construct(
         private readonly LoggerInterface         $logger,

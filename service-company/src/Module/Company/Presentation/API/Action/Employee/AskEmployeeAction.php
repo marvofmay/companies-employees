@@ -9,7 +9,6 @@ use Symfony\Component\Messenger\Exception\ExceptionInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\HandledStamp;
 
-
 final readonly class AskEmployeeAction
 {
     public function __construct(

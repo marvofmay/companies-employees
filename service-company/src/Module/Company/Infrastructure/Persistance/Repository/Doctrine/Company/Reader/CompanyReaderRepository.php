@@ -79,7 +79,7 @@ class CompanyReaderRepository extends ServiceEntityRepository implements Company
     {
         $qb = $this->getEntityManager()->createQueryBuilder();
 
-        $qb->select(Company::ALIAS)
+        $qb->select('COUNT(' . Company::ALIAS . '.' . Company::COLUMN_UUID . ')')
             ->from(Company::class, Company::ALIAS)
             ->where(sprintf('%s.%s = :nip OR %s.%s = :name', Company::ALIAS, Company::COLUMN_NIP, Company::ALIAS, Company::COLUMN_NAME))
             ->setParameter('nip', $nip)
@@ -90,6 +90,8 @@ class CompanyReaderRepository extends ServiceEntityRepository implements Company
                 ->setParameter('uuid', $companyUUID);
         }
 
-        return null !== $qb->getQuery()->getOneOrNullResult();
+        $count = (int) $qb->getQuery()->getSingleScalarResult();
+
+        return $count > 0;
     }
 }

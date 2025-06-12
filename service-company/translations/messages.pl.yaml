@@ -3,3 +3,7 @@ notCorrectMethodHTTP: "Niepoprawna metoda HTTP dla tego zasobu. Sprawdź dokumen
 notEndpointFound: "Endpoint nie został znaleziony lub brakuje wymaganych parametrów."
 pageMustBeAnInteger: "Paramter page musi być liczbą naturalną"
 pageMustBeGreaterThan0: "Paramter page musi być liczbą naturalną, większą od 0"
+uuid:
+    invalid:
+        role: "Nieprawidłowa składnia uui roli"
+        company: "Nieprawidłowa składnia uuid firmy"

@@ -7,8 +7,6 @@ namespace App\Module\Company\Domain\DTO\Employee;
 use App\Common\Domain\DTO\AddressDTO;
 use App\Common\Validator\Constraints\MinMaxLength;
 use App\Common\Validator\Constraints\NotBlank;
-use App\Module\Company\Structure\Validator\Constraints\Company\ExistingCompanyUUID;
-use App\Module\Company\Structure\Validator\Constraints\Employee\UniqueEmployeeEmail;
 use App\Module\Company\Structure\Validator\Constraints\Role\ExistingRoleUUID;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -18,20 +16,14 @@ class CreateDTO
         'text'   => 'company.uuid.required',
         'domain' => 'companies',
     ])]
-    #[Assert\Uuid(message: 'company.invalidUUID')]
-    #[ExistingCompanyUUID(
-        message: ['uuidNotExists' => 'company.uuid.notExists', 'domain' => 'companies']
-    )]
+    #[Assert\Uuid(message: 'uuid.invalid.company')]
     public string $companyUUID;
 
-    #[Assert\Uuid(message: 'role.invalidUUID')]
+    #[Assert\Uuid(message: 'uuid.invalid.role')]
     #[NotBlank(message: [
         'text'   => 'role.uuid.required',
         'domain' => 'roles',
     ])]
-    #[ExistingRoleUUID(
-        message: ['uuidNotExists' => 'role.uuid.notExists', 'domain' => 'roles']
-    )]
     public string $roleUUID;
 
     #[NotBlank(message: [
@@ -39,7 +31,6 @@ class CreateDTO
         'domain' => 'employees',
     ])]
     #[Assert\Email(message: 'email.invalid')]
-    #[UniqueEmployeeEmail]
     public string $email;
 
     #[NotBlank(message: [

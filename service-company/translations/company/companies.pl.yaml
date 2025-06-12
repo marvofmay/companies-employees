@@ -1,5 +1,5 @@
 company:
-  alreadyExists: "Firma o padanym NIP :nip lub REGON :regon już istnieje"
+  alreadyExists: "Firma o padanym NIP :nip lub nazwie :name już istnieje"
   uuid:
     notFound: "Firma o podanym UUID nie istnieje"
     notExists: "Firma o podanym UUID nie istnieje :uuid"

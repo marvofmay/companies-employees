@@ -9,7 +9,7 @@ use App\Module\Company\Application\Query\Company\ListCompaniesQuery;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\HandledStamp;
 
-final class AskCompaniesAction
+final readonly class AskCompaniesAction
 {
     public function __construct(private MessageBusInterface $queryBus)
     {

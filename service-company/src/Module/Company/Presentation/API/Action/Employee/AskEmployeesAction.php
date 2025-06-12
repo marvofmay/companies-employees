@@ -10,9 +10,8 @@ use App\Module\Company\Application\Query\Employee\ListEmployeesQuery;;
 use Symfony\Component\Messenger\Exception\ExceptionInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\HandledStamp;
-use Throwable;
 
-final class AskEmployeesAction
+final readonly class AskEmployeesAction
 {
     public function __construct(private MessageBusInterface $queryBus)
     {

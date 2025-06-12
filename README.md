@@ -197,10 +197,9 @@ Wykonywanie CRUD np. w ``POSTMAN``
 - update employee [PUT]: ``/api/employees/00c1c4e8-bc05-4a24-9665-4a402a18c891``
 
   payload:  
-    pola `phones`, `emails`, `address` nie są wymagane 
+    pola `phones`, `email`, `address` nie są wymagane 
 ```
 {
-    "uuid": "00c1c4e8-bc05-4a24-9665-4a402a18c891",
     "companyUUID": "3e005155-b1ec-4ff6-9455-87c76a1f99dd",
     "roleUUID": "776f8cf0-8b7d-4fb3-aa8a-2b8836403d48",
     "firstName": "Jan",
